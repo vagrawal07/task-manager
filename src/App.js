@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext, useMemo, useCallback } from "react";
+import { motion } from "framer-motion"; // Import framer-motion
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import { ThemeContext } from "./context/ThemeContext";
@@ -94,7 +95,17 @@ const App = () => {
       </div>
 
       <TaskForm addTask={addTask} />
-      <TaskList tasks={filteredTasks} setTasks={setTasks} updateTask={updateTask} deleteTask={deleteTask} />
+      
+      {/* Animated Task List */}
+      <motion.div
+        className="task-list"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <TaskList tasks={filteredTasks} setTasks={setTasks} updateTask={updateTask} deleteTask={deleteTask} />
+      </motion.div>
 
       {/* Undo/Redo Buttons */}
       <div className="undo-redo">

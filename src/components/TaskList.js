@@ -1,6 +1,7 @@
 import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { motion } from "framer-motion"; // Import framer-motion for animations
 import TaskItem from "./TaskItem";
 
 const TaskList = ({ tasks, setTasks, updateTask, deleteTask }) => {
@@ -14,22 +15,35 @@ const TaskList = ({ tasks, setTasks, updateTask, deleteTask }) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <ul className="task-list">
+      <motion.ul
+        className="task-list"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         {tasks.length === 0 ? (
           <p style={{ textAlign: "center", color: "#777" }}>No tasks yet. Add one!</p>
         ) : (
           tasks.map((task, index) => (
-            <TaskItem
+            <motion.li
               key={task.id}
-              index={index}
-              task={task}
-              moveTask={moveTask}
-              updateTask={updateTask}
-              deleteTask={deleteTask}
-            />
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              <TaskItem
+                index={index}
+                task={task}
+                moveTask={moveTask}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
+              />
+            </motion.li>
           ))
         )}
-      </ul>
+      </motion.ul>
     </DndProvider>
   );
 };
