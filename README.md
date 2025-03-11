@@ -1,5 +1,7 @@
 Task Manager App
 
+Live Demo Link: [Demo](https://task-manager-two-ivory.vercel.app)
+
 A simple task management application built with React, allowing users to create, update, delete, and reorder tasks. It includes features like task filtering, dark mode toggle, and undo/redo functionality for actions performed on tasks.
 
 Features
@@ -22,7 +24,7 @@ CSS: Custom styles for the app.
 Setup Instructions
 
 1. Clone the repository
-git clone https://github.com/your-username/task-manager-app.git
+git clone [github](https://github.com/vagrawal07/task-manager)
 cd task-manager-app
 2. Install dependencies
 Make sure you have Node.js installed. Then, run the following command to install the necessary packages:
